@@ -1,3 +1,6 @@
 /HeeksCAD-svnHEAD.tar.bz2
 
 /*.src.rpm
+/.build-*.log
+/HeeksCAD/
+/x86_64/
