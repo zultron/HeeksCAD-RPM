@@ -1,5 +1,10 @@
 %global checkout 20111212gitb6b1de3
 
+# Use updated cmake package on EL builds.
+%if 0%{?rhel}
+%global cmake %cmake28 -DBoost_NO_BOOST_CMAKE=ON
+%endif
+
 Name:           HeeksCAD
 Version:        0.18.0
 Release:        0.1.%{checkout}%{?dist}
@@ -10,9 +15,14 @@ URL:            https://github.com/Heeks/heekscad
 #fedora-getsvn HeeksCAD https://github.com/Heeks/heekscad.git/trunk HEAD
 Source0:        %{name}-svnHEAD.tar.bz2
 Patch0:         cmake.patch
+Patch1:         HeeksCAD-cmake_epel.patch
 
 
+%if (0%{?rhel} == 6)
+BuildRequires:  cmake28
+%else
 BuildRequires:  cmake
+%endif
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  OCE-devel
@@ -44,6 +54,7 @@ resources needed for developing %{name} plugins.
 %prep
 %setup -q -n %{name}
 %patch0 -p1 -b .cmake-build
+%patch1 -p1 -b .cmake-epel
 
 # fix permissions on source files
 chmod a-x src/*

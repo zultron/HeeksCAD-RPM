@@ -1,0 +1,12 @@
+diff -up HeeksCAD/translations/CMakeLists.txt.cmake-epel HeeksCAD/translations/CMakeLists.txt
+--- HeeksCAD/translations/CMakeLists.txt.cmake-epel	2011-11-14 23:56:13.000000000 -0600
++++ HeeksCAD/translations/CMakeLists.txt	2013-04-01 03:41:22.000000000 -0500
+@@ -33,7 +33,7 @@ ELSE(NOT GETTEXT_MSGFMT_EXECUTABLE)
+                         SET(_moFile ${CMAKE_CURRENT_BINARY_DIR}/${_langCode}/${appname}.mo)
+ 
+                         ADD_CUSTOM_COMMAND(TARGET translations
+-                                COMMAND cmake -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${_langCode}
++                                COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${_langCode}
+                                 COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} --check -o ${_moFile} ${_poFile}
+                                 DEPENDS ${_poFile})
+                         INSTALL(FILES ${_moFile} DESTINATION share/locale/${_langCode}/LC_MESSAGES/ )
