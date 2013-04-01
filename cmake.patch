@@ -1,0 +1,39 @@
+Index: HeeksCAD/interface/CMakeLists.txt
+===================================================================
+--- HeeksCAD.orig/interface/CMakeLists.txt
++++ HeeksCAD/interface/CMakeLists.txt
+@@ -32,7 +32,6 @@ set( heeksintf_HDRS
+         HeeksObj.h           ObjList.h            PropertyFile.h    strconv.h
+    )
+ 
+-add_library( heeksintf SHARED ${heeksintf_SRCS} ${heeksintf_HDRS} )
++add_library( heeksintf STATIC ${heeksintf_SRCS} ${heeksintf_HDRS} )
+ target_link_libraries( heeksintf ${PYTHON_LIBRARIES} ${wxWidgets_LIBRARIES} )
+ set_target_properties( heeksintf PROPERTIES SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH} )
+-install( TARGETS heeksintf DESTINATION lib )
+Index: HeeksCAD/tinyxml/CMakeLists.txt
+===================================================================
+--- HeeksCAD.orig/tinyxml/CMakeLists.txt
++++ HeeksCAD/tinyxml/CMakeLists.txt
+@@ -11,7 +11,6 @@ set ( LIBRARY_OUTPUT_PATH ../bin )
+ set( tinyxml_SRCS tinystr.cpp  tinyxml.cpp  tinyxmlerror.cpp  tinyxmlparser.cpp )
+ set( tinyxml_HDRS tinystr.h  tinyxml.h )
+ 
+-add_library( tinyxml SHARED ${tinyxml_SRCS} ${tinyxml_HDRS} )
++add_library( tinyxml STATIC ${tinyxml_SRCS} ${tinyxml_HDRS} )
+ target_link_libraries( tinyxml ${PYTHON_LIBRARIES} )
+ set_target_properties( tinyxml PROPERTIES SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH} )
+-install( TARGETS tinyxml DESTINATION lib )
+Index: HeeksCAD/sketchsolve/src/CMakeLists.txt
+===================================================================
+--- HeeksCAD.orig/sketchsolve/src/CMakeLists.txt
++++ HeeksCAD/sketchsolve/src/CMakeLists.txt
+@@ -11,7 +11,6 @@ set ( LIBRARY_OUTPUT_PATH ../../bin )
+ set( sketchsolve_SRCS errorfuncs.cpp solve.cpp solveimpl.cpp ) #Derivatives.cpp SolverPointers.cpp
+ set( sketchsolve_HDRS timer.h solve.h )
+ 
+-add_library( sketchsolve SHARED ${sketchsolve_SRCS} ${sketchsolve_HDRS} )
++add_library( sketchsolve STATIC ${sketchsolve_SRCS} ${sketchsolve_HDRS} )
+ target_link_libraries( sketchsolve ${PYTHON_LIBRARIES} )
+ set_target_properties( sketchsolve PROPERTIES SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH} )
+-install( TARGETS sketchsolve DESTINATION lib )
