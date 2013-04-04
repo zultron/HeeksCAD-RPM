@@ -31,6 +31,9 @@ BuildRequires:  OCE-devel
 BuildRequires:  python-devel
 #BuildRequires:  tinyxml-devel
 BuildRequires:  wxGTK-devel
+BuildRequires:	libXmu-devel
+BuildRequires:	freeimage-devel
+BuildRequires:	tbb-devel
 
 
 %description
@@ -120,6 +123,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %changelog
 * Wed Apr  3 2013 John Morris <john@zultron.com> - 0.18.0-0.2.20111212gitb6b1de3
 - Add patch to fix PI macro in OCE
+- Add BR: libXmu-devel, freeimage-devel, tbb-devel
 
 * Mon Dec 12 2011 Chris Spike <spike@fedoraproject.org> 0.18.0-0.1.20111212gitb6b1de3
 - 
