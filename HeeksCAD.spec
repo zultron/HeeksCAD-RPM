@@ -76,7 +76,6 @@ make %{?_smp_mflags} CFLAGS="%{optflags}"
 
 
 %install
-rm -rf %{buildroot}
 make install DESTDIR=%{buildroot}
 mv -f %{buildroot}%{_bindir}/heekscad-%{version} %{buildroot}%{_bindir}/heekscad
 
