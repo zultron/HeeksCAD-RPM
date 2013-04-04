@@ -7,7 +7,7 @@
 
 Name:           HeeksCAD
 Version:        0.18.0
-Release:        0.1.%{checkout}%{?dist}
+Release:        0.2.%{checkout}%{?dist}
 Summary:        CAD application using OpenCASDADE and wxWidgets
 Group:          Applications/Engineering
 License:        BSD
@@ -16,6 +16,8 @@ URL:            https://github.com/Heeks/heekscad
 Source0:        %{name}-svnHEAD.tar.bz2
 Patch0:         cmake.patch
 Patch1:         HeeksCAD-cmake_epel.patch
+# Fix compile problems from OCE and PI macro; see patch for details
+Patch2:         HeeksCAD-OCE_PI_compile_fixes.patch
 
 
 %if (0%{?rhel} == 6)
@@ -55,6 +57,7 @@ resources needed for developing %{name} plugins.
 %setup -q -n %{name}
 %patch0 -p1 -b .cmake-build
 %patch1 -p1 -b .cmake-epel
+%patch2 -p1 -b .ope-pi-compile
 
 # fix permissions on source files
 chmod a-x src/*
@@ -115,5 +118,8 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
+* Wed Apr  3 2013 John Morris <john@zultron.com> - 0.18.0-0.2.20111212gitb6b1de3
+- Add patch to fix PI macro in OCE
+
 * Mon Dec 12 2011 Chris Spike <spike@fedoraproject.org> 0.18.0-0.1.20111212gitb6b1de3
 - 
