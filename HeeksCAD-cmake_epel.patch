@@ -1,3 +1,7 @@
+cmake should execute the cmake from ${CMAKE_COMMAND}
+
+This fixes compile on el6, where the updated cmake is 'cmake28' from EPEL
+
 diff -up HeeksCAD/translations/CMakeLists.txt.cmake-epel HeeksCAD/translations/CMakeLists.txt
 --- HeeksCAD/translations/CMakeLists.txt.cmake-epel	2011-11-14 23:56:13.000000000 -0600
 +++ HeeksCAD/translations/CMakeLists.txt	2013-04-01 03:41:22.000000000 -0500
